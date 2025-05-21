@@ -26,7 +26,7 @@ function EditTrackedCourse({ loggedInUserId }) {
   useEffect(() => {
     console.log('EditTrackedCourse - Fetching for loggedInUserId:', loggedInUserId, 'Course ID:', id);
     if (loggedInUserId && id) {
-      axios.get(`http://localhost:5000/tracked-courses/${id}?userId=${loggedInUserId}`)
+      axios.get(`${process.env.REACT_APP_BACKEND_URL}/tracked-courses/${id}?userId=${loggedInUserId}`)
         .then(response => {
           const courseData = response.data;
           setCourseName(courseData.courseName);
@@ -81,7 +81,7 @@ function EditTrackedCourse({ loggedInUserId }) {
     };
 
     try {
-      const response = await axios.post(`http://localhost:5000/tracked-courses/update/${id}`, updatedTrackedCourse);
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/tracked-courses/update/${id}`, updatedTrackedCourse);
       setMessage(response.data.message); // Display success message
 
       // Navigate back to the list page using history.push for v5

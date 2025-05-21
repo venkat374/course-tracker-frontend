@@ -62,7 +62,7 @@ function TrackedCourseList({ loggedInUserId }) {
   useEffect(() => {
     console.log('TrackedCourseList - Fetching for loggedInUserId:', loggedInUserId);
     if (loggedInUserId) {
-      axios.get(`http://localhost:5000/tracked-courses/?userId=${loggedInUserId}`)
+      axios.get(`${process.env.REACT_APP_BACKEND_URL}/tracked-courses/?userId=${loggedInUserId}`)
         .then(response => {
           setTrackedCourses(response.data);
           setFetchError(''); // Clear any previous fetch error
@@ -82,7 +82,7 @@ function TrackedCourseList({ loggedInUserId }) {
   // Function to handle course deletion
   const deleteTrackedCourse = (id) => {
     if (loggedInUserId && window.confirm("Are you sure you want to delete this course? This action cannot be undone.")) {
-      axios.delete(`http://localhost:5000/tracked-courses/${id}`, { data: { userId: loggedInUserId } }) // Pass userId in data for DELETE
+      axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tracked-courses/${id}`, { data: { userId: loggedInUserId } }) // Pass userId in data for DELETE
         .then(res => {
           console.log(res.data.message);
           // Update state to remove the deleted course from the list

@@ -48,7 +48,7 @@ function AddTrackedCourse({ loggedInUserId }) {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/tracked-courses/add', newTrackedCourse);
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/tracked-courses/add`, newTrackedCourse);
       setMessage(response.data.message); // Display success message from backend
 
       // Reset form fields after successful submission
