@@ -1,0 +1,315 @@
+/* Modern Theme - Final Version */
+:root {
+  /* Color Palette */
+  --primary: #4f46e5;        /* Indigo-600 (used for primary actions, links) */
+  --primary-dark: #4338ca;   /* Indigo-700 (darker primary for hover) */
+  --secondary: #6b7280;      /* Gray-500 (used for muted text, secondary actions) */
+  --secondary-dark: #4b5563; /* Gray-600 (darker secondary for hover) */
+  --success: #10b981;        /* Emerald-500 (used for success messages, progress bars) */
+  --success-dark: #059669;   /* Emerald-600 (darker success for hover) */
+  --danger: #ef4444;         /* Red-500 (used for danger actions, error messages) */
+  --danger-dark: #dc2626;    /* Red-600 (darker danger for hover) */
+  --bg: #f9fafb;             /* Gray-50 (light background) */
+  --card-bg: #ffffff;        /* White background for cards/containers */
+  --text: #111827;           /* Gray-900 (dark text) */
+  --text-muted: #6b7280;     /* Gray-500 (lighter text for labels, descriptions) */
+  --border: #e5e7eb;         /* Gray-200 (light border color) */
+  --radius: 0.5rem;          /* Border radius for rounded corners */
+  --shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle box shadow */
+  --transition: all 0.3s ease; /* Smooth transition for hover effects */
+  --font-sans: 'Inter', sans-serif; /* Modern sans-serif font */
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6; /* Improved readability */
+  -webkit-font-smoothing: antialiased; /* Smoother font rendering on macOS */
+  padding: 1rem; /* Some padding around the entire app content */
+}
+
+.container {
+  max-width: 960px; /* Max width for content area */
+  margin: 2rem auto; /* Center container with vertical margin */
+  padding: 2rem; /* Inner padding */
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none; /* No underline */
+}
+
+.navbar-nav {
+  list-style: none; /* Remove bullet points */
+  display: flex;
+  gap: 1.5rem; /* Space between nav items */
+}
+
+.nav-link {
+  color: var(--secondary-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 0.25rem 0; /* Add some padding for click area */
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack items vertically on small screens */
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    align-items: center; /* Center nav links */
+  }
+}
+
+/* Typography */
+h3 {
+  color: var(--primary);
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem; /* More space below heading */
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+/* Form Elements */
+label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+input:not([type="checkbox"]), /* Target all inputs except checkboxes */
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none; /* Remove default outline */
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.2); /* Custom focus ring */
+}
+
+select {
+  appearance: none; /* Remove default dropdown arrow */
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%234b5563" viewBox="0 0 4 5"><path d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>'); /* Custom SVG arrow */
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center; /* Position the arrow */
+  background-size: 0.6em auto; /* Size the arrow */
+  padding-right: 2rem; /* Make space for the arrow */
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical; /* Allow vertical resizing */
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; /* Use flexbox for centering content if needed */
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  color: #fff;
+  text-decoration: none; /* No underline for links acting as buttons */
+  margin-top: 0.5rem; /* Added margin to buttons */
+}
+
+.btn-primary {
+  background: var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px); /* Subtle lift effect */
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.btn-success {
+  background: var(--success);
+}
+
+.btn-success:hover {
+  background: var(--success-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.btn-danger {
+  background: var(--danger);
+}
+
+.btn-danger:hover {
+  background: var(--danger-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* Alerts */
+.alert {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.alert-info {
+  background: #e0f2fe; /* Light blue */
+  color: #0369a1; /* Darker blue text */
+  border: 1px solid #bae6fd;
+}
+
+.alert-danger {
+  background: #fee2e2; /* Light red */
+  color: #991b1b; /* Darker red text */
+  border: 1px solid #fecaca;
+}
+
+/* Table styles */
+.table {
+  width: 100%;
+  border-collapse: separate; /* Use separate to allow border-radius on cells */
+  border-spacing: 0; /* Remove default spacing */
+  margin-top: 1.5rem;
+  border-radius: var(--radius);
+  overflow: hidden; /* Ensures rounded corners are applied */
+  box-shadow: var(--shadow);
+  background: var(--card-bg);
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+  /* border-bottom: 1px solid var(--border); */ /* Removed individual cell borders for a cleaner look */
+}
+
+/* Apply borders only to the table container and first/last row for better separation */
+.table thead th {
+  background: #f3f4f6; /* Light header background */
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--border); /* Border between rows */
+}
+
+.table tbody tr:last-child {
+  border-bottom: none; /* No border for the last row */
+}
+
+.table tbody tr:nth-child(even) {
+  background: #fafafa; /* Subtle stripe effect */
+}
+
+/* Progress Bar */
+.progress {
+  background: #e5e7eb;
+  border-radius: 9999px; /* Fully rounded caps */
+  overflow: hidden;
+  height: 1.25rem; /* Taller progress bar */
+}
+
+.progress-bar {
+  height: 100%;
+  line-height: 1.25rem;
+  text-align: center;
+  background: var(--success);
+  color: #fff;
+  transition: var(--transition);
+  border-radius: 9999px; /* Fully rounded caps for the bar itself */
+}
+
+/* Utility Spacing (keep these minimal if using a styling system, or expand them) */
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.ml-2 { margin-left: 0.5rem; }
+.mr-2 { margin-right: 0.5rem; }
+
+/* Specific styles for filter and sort controls */
+.filter-sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* More space between controls */
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.filter-sort-controls label {
+  margin-bottom: 0; /* Override default label margin */
+  white-space: nowrap; /* Prevent label wrapping */
+}
+
+.filter-sort-controls select {
+  margin-bottom: 0; /* Override default select margin */
+  max-width: 200px; /* Limit width of select */
+}
+
+.filter-sort-controls .btn {
+  margin-top: 0; /* Remove top margin for buttons within this flex container */
+}
